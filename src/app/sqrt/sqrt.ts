@@ -1,4 +1,4 @@
-export function sqrt(oper1) {  
+export function sqrt(oper1:number) {  
     // refactoring
     let sqrt = 0;
 

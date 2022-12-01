@@ -1,4 +1,4 @@
-export function exp(base, exp) {  
+export function exp(base:number, exp:number) {  
     // refactoring
 
     let pow = 0;
