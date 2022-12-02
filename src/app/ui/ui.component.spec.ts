@@ -492,3 +492,82 @@ describe('Ui exp - Component', () => {
      
   });
 });
+// S   Q   R******************************************************************************************
+describe('Ui Sqr - Component', () => {
+let component: UiComponent;
+let fixture: ComponentFixture<UiComponent>;
+
+beforeEach(async(() => {
+  TestBed.configureTestingModule({
+    declarations: [ UiComponent ],
+    imports: [FormsModule],
+  })
+  .compileComponents();
+}));
+
+beforeEach(() => {
+  fixture = TestBed.createComponent(UiComponent);
+  component = fixture.componentInstance;
+  fixture.detectChanges();
+});
+
+it('Should call Sqr method', () => {
+   // Arrange
+   let result = 0;
+   component.operator1 = 7;
+
+   // Act
+   component.sqr();
+   result = component.result;
+
+   // Assert
+   expect(result).toBe(49);
+});
+
+
+
+it('Should set operator1 model through ngModel', async() => {
+  // Arrange 
+  await fixture.whenStable();
+  fixture.detectChanges();
+  const inputElement = fixture.debugElement.query(By.css('input[name="operator1"]')).nativeElement;
+
+  // Act 
+  inputElement.value = '5';
+  inputElement.dispatchEvent(new Event('input'));
+  fixture.detectChanges();
+
+  // Assert 
+  expect(component.operator1).toEqual(5);
+});
+
+it('should sqr operator1 when i click the sqr button ', () => {
+  // Arrange 
+  component.operator1 = 6.0;
+  let sqrButton = fixture.debugElement.query(By.css('.sqr-button'));
+
+  // Act
+  sqrButton.triggerEventHandler('click', null);
+
+  // Assert
+  expect(component.result).toBe(36);
+
+ });
+
+it('Should render sqr in result div', () => {
+  // Arrange
+  component.operator1 = 10;
+
+  // Act
+  component.sqr();
+  fixture.detectChanges();
+  
+  let de = fixture.debugElement.query(By.css('.result'));
+  let el : HTMLElement = de.nativeElement;
+
+  // Assert
+  expect(el.innerText).toContain('100');
+   
+});
+
+});
