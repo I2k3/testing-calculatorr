@@ -50,4 +50,10 @@
     font-size: 45px;
     font-weight: 1000;
 }
+.exp-button {
+    cursor: pointer;
+    color: rgb(1, 253, 240);
+    font-size: 45px;
+    font-weight: 1000;
+}
 
